@@ -1,7 +1,13 @@
+import datetime
+
 class Cliente:
-    def __init__(self, nome, saldo_inicial = 0, saques_diarios = 0):
+    def __init__(self, nome, saldo_inicial = 0, data_atual = datetime.date.today()):
         self.nome = nome;
         self.saldo = saldo_inicial;
+        self.saques_diarios = 0;
+        if self.data_atual != datetime.date.today:
+            self.data_atual = datetime.date.today;
+            self.saques_diarios = 0;
 
     def deposito(self, valor):
         self.saldo += valor;
@@ -17,7 +23,5 @@ class Cliente:
             self.saldo -= valor;
             print(f"{self.nome}, foram sacados R${valor} de sua conta.");
 
-
-
     def extrato(self):
-        print(f"{self.nome}, você possui R${valor} em sua conta.");
+        print(f"{self.nome}, você possui R${self.saldo} em sua conta.");
