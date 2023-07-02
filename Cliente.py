@@ -15,6 +15,10 @@ class Cliente:
         print(f"{self.nome}, foi adicionado R${valor} à sua conta.");
     
     def saque(self, valor):
+        if self.data_atual != datetime.date.today:
+            self.data_atual = datetime.date.today;
+            self.saques_diarios = 0;
+        
         if self.saques_diarios >= 3:
             print(f"{self.nome}, você já ultrapassou o limite de 3 saques diários. Espere até o próximo dia para poder realizar novos saques.");
         elif valor > 500:
